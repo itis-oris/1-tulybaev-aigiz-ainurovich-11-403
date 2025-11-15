@@ -25,7 +25,6 @@ public class AuthFilter implements Filter {
     public void init(FilterConfig filterConfig) {
         ServletContext context = filterConfig.getServletContext();
 
-        // достаем карту сервисов, созданную в AppContextListener
         Map<String, Object> services = (Map<String, Object>) context.getAttribute("services");
 
         if (services != null) {

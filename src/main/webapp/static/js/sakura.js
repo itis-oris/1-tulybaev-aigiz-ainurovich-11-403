@@ -1,4 +1,3 @@
-// Sakura
 for (let i = 0; i < 20; i++) {
     const p = document.createElement("div");
     p.className = "sakura";

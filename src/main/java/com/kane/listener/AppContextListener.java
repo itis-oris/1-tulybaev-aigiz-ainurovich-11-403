@@ -10,6 +10,7 @@ import com.kane.service.AuthService;
 import com.kane.service.CategoryService;
 import com.kane.service.OperationService;
 import com.kane.util.DBConnectionManager;
+import com.kane.util.FreemarkerConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -25,6 +26,7 @@ public class AppContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
         DBConnectionManager.init();
+        FreemarkerConfig.initFreemarkerConfig();
 
         UserRepository userRepository = new UserRepositoryImpl();
         CategoryRepository categoryRepository = new CategoryRepositoryImpl();

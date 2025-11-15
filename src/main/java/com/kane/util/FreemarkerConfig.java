@@ -6,7 +6,7 @@ import freemarker.template.TemplateExceptionHandler;
 public class FreemarkerConfig {
     private static final Configuration cfg = new Configuration(Configuration.VERSION_2_3_32);
 
-    static {
+    public static void initFreemarkerConfig() {
         cfg.setClassForTemplateLoading(FreemarkerConfig.class, "/templates");
         cfg.setDefaultEncoding("UTF-8");
         cfg.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);

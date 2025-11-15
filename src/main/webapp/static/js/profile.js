@@ -1,5 +1,4 @@
 
-// Modal
 const modal = document.getElementById("profileModal");
 const openBtn = document.getElementById("editProfileBtn");
 const closeBtn = document.getElementById("closeProfileModal");

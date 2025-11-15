@@ -30,12 +30,10 @@ public class ProfileUpdateServlet extends HttpServlet {
 
         try {
             authService.updateProfile(user.getId(), username, email, password);
-            // Обновляем сессию
             User updated = authService.findById(user.getId());
             session.setAttribute("user", updated);
             resp.sendRedirect(req.getContextPath() + "/profile");
         } catch (Exception e) {
-            // Можно вернуть ошибку в шаблон, но для простоты — редирект
             resp.sendRedirect(req.getContextPath() + "/profile?error=update_failed");
         }
     }

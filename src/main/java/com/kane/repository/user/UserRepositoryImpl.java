@@ -99,7 +99,7 @@ public class UserRepositoryImpl implements UserRepository {
                 u.setId(rs.getLong("id"));
                 u.setUsername(rs.getString("username"));
                 u.setEmail(rs.getString("email"));
-                // пароль не возвращаем обычно, но можно
+
                 return u;
             }
         } catch (SQLException e) {

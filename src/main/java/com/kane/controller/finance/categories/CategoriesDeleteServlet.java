@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet("/categories/delete")
 public class CategoriesDeleteServlet extends HttpServlet {
     private final CategoryService service = new CategoryService();
-    private final OperationService operationService = new OperationService(); // добавьте
+    private final OperationService operationService = new OperationService();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

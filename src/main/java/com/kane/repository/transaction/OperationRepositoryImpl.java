@@ -39,7 +39,6 @@ public class OperationRepositoryImpl implements OperationRepository {
         return getAllByUserId(userId, 0);
     }
 
-    // НОВЫЙ МЕТОД с лимитом
     public List<Operation> getAllByUserId(long userId, int limit) {
         List<Operation> list = new ArrayList<>();
         String sql = "SELECT t.*, c.name AS category_name " +
@@ -48,7 +47,6 @@ public class OperationRepositoryImpl implements OperationRepository {
                 "WHERE t.user_id = ? " +
                 "ORDER BY t.transaction_date DESC";
 
-        // Добавляем LIMIT если нужно
         if (limit > 0) {
             sql += " LIMIT ?";
         }
@@ -80,7 +78,6 @@ public class OperationRepositoryImpl implements OperationRepository {
         return list;
     }
 
-    // остальные методы без изменений
     @Override
     public void updateOperation(Operation op) {
         String sql = """
@@ -149,7 +146,7 @@ public class OperationRepositoryImpl implements OperationRepository {
             throw new RuntimeException("Ошибка при получении операций по категории ID: " + categoryId, e);
         }
 
-        return operations; // возвращаем пустой список, если нет записей
+        return operations;
     }
 
     @Override
@@ -199,7 +196,7 @@ public class OperationRepositoryImpl implements OperationRepository {
                 double income = rs.getDouble("total_income");
                 double expense = rs.getDouble("total_expense");
                 double balance = income - expense;
-                double delta = income - expense; // дельта = баланс
+                double delta = income - expense;
 
                 stats.put("income", income);
                 stats.put("expense", expense);

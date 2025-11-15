@@ -94,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (exists) {
                         categorySelect.value = catId;
                     } else {
-                        // Добавляем текущую категорию, если её нет в списке
                         const opt = document.createElement("option");
                         opt.value = catId;
                         opt.textContent = "⚠️ #" + catId;

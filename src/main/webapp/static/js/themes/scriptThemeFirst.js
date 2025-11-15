@@ -1,6 +1,5 @@
 
 
-// === ТЕМА (ИСПРАВЛЕНО) ===
 const html = document.documentElement;
 const savedTheme = localStorage.getItem("theme") || "light";
 html.classList.remove("light", "dark");

@@ -14,7 +14,7 @@ public class Operation {
     private String type;
     private Timestamp created_at;
     private String note;
-    private String categoryName; // для отображения имени категории
+    private String categoryName;
 
     public Operation() {}
 

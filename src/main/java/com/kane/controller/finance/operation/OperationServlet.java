@@ -45,11 +45,9 @@ public class OperationServlet extends HttpServlet {
 
         List<Operation> operations = operationService.getUserOperations(userId);
 
-        // Получаем категории
         List<Category> incomeCategories = operationService.getIncomeCategories();
         List<Category> expenseCategories = operationService.getExpenseCategories();
 
-        // Добавляем названия категорий для каждой транзакции
         for (Operation t : operations) {
             for (Category cat : incomeCategories) {
                 if (cat.getId() == t.getCategoryId()) {
@@ -117,7 +115,7 @@ public class OperationServlet extends HttpServlet {
                 t.setNote(request.getParameter("note"));
                 operationService.updateOperation(t);
             }
-            default -> { // add
+            default -> {
                 Operation operation = new Operation();
                 operation.setUserId(userId);
                 operation.setCategoryId(Integer.parseInt(request.getParameter("categoryId")));

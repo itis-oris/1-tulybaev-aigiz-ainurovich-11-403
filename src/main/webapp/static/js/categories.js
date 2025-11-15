@@ -1,4 +1,3 @@
-// === ЛОГИРОВАНИЕ И ИНИЦИАЛИЗАЦИЯ ===
 console.log("=== Categories Page Loaded ===");
 console.log("Context Path (from window):", window.contextPath);
 
@@ -8,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    // === МОДАЛКА ===
     const modal = document.getElementById("modal");
     const modalContent = document.getElementById("modalContent");
     const form = document.getElementById("categoryForm");
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const formActionInput = document.getElementById("formActionInput");
     const categoryIdInput = document.getElementById("categoryIdInput");
 
-    // Иконки и цвета
     const remixIcons = [
         'ri-wallet-2-fill', 'ri-money-dollar-circle-fill', 'ri-bank-fill', 'ri-coins-fill',
         'ri-bar-chart-2-fill', 'ri-line-chart-fill', 'ri-pie-chart-2-fill',
@@ -54,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
         '#607D8B', '#8BC34A', '#F44336', '#3F51B5'
     ];
 
-    // Render icons
     iconGrid.innerHTML = "";
     remixIcons.forEach(icon => {
         const btn = document.createElement("button");
@@ -70,7 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
         iconGrid.appendChild(btn);
     });
 
-    // Render colors
     colorGrid.innerHTML = "";
     colors.forEach(color => {
         const btn = document.createElement("button");
@@ -86,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
         colorGrid.appendChild(btn);
     });
 
-    // Type toggle
     const setType = (type) => {
         typeInput.value = type;
         if (type === "income") {
@@ -101,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     incomeBtn.addEventListener("click", () => setType("income"));
     expenseBtn.addEventListener("click", () => setType("expense"));
 
-    // Modal open/close
     const openModal = () => {
         modal.classList.remove("hidden");
         modal.setAttribute("aria-hidden", "false");
@@ -138,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
     [cancelBtn, cancelBtn2].forEach(btn => btn?.addEventListener("click", closeModal));
     modal?.addEventListener("click", e => e.target.hasAttribute("data-overlay") && closeModal());
 
-    // Edit buttons
     document.querySelectorAll(".edit-category-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             const id = btn.dataset.id;
@@ -169,13 +161,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 colorBtn.style.outline = "3px solid #000";
             }
 
-            // Устанавливаем action перед открытием (но окончательно — при submit)
             form.action = ctx + "/categories/update";
             openModal();
         });
     });
 
-    // Form submit — финальная установка action
     form.addEventListener("submit", (e) => {
         const action = formActionInput.value;
         const id = categoryIdInput.value;
