@@ -20,7 +20,6 @@ public class OperationService {
         operationRepository.addOperation(Operation);
     }
 
-    // Существующий метод (все операции)
     public List<Operation> getUserOperations(long userId) {
         return operationRepository.getAllByUserId(userId);
     }

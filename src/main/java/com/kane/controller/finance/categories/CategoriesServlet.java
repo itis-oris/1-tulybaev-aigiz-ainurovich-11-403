@@ -36,7 +36,6 @@ public class CategoriesServlet extends HttpServlet {
         data.put("contextPath", req.getContextPath());
         data.put("Request", req);
 
-        // Получаем шаблон
         Template template = FreemarkerConfig.getConfig().getTemplate("finance/categories.ftl");
 
         resp.setContentType("text/html; charset=UTF-8");

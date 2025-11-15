@@ -24,7 +24,6 @@ public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, Object> model = new HashMap<>();
 
-        // Получаем текущего пользователя из сессии
         HttpSession session = request.getSession(false);
         if (session != null) {
             User user = (User) session.getAttribute("user");

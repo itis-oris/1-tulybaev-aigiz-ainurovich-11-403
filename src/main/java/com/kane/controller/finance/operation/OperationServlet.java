@@ -35,7 +35,6 @@ public class OperationServlet extends HttpServlet {
 
         User user = (User) session.getAttribute("user");
 
-        // ✅ ДОБАВИЛ ПРОВЕРКУ НА NULL ID
         if (user == null || user.getId() == null) {
             logger.error("User object is null or user ID is null in session");
             response.sendRedirect("login");
@@ -44,7 +43,6 @@ public class OperationServlet extends HttpServlet {
 
         long userId = user.getId();
 
-        // Получаем операции пользователя
         List<Operation> operations = operationService.getUserOperations(userId);
 
         // Получаем категории

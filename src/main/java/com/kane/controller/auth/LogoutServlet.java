@@ -1,6 +1,5 @@
 package com.kane.controller.auth;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.apache.logging.log4j.LogManager;

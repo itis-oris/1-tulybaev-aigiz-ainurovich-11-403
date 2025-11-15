@@ -38,11 +38,9 @@ public class HomeServlet extends HttpServlet {
         if (user != null && user.getId() != null) {
             long userId = user.getId();
 
-            // Получаем последние операции
             List<Operation> operations = operationService.getUserOperations(userId, 5);
             model.put("operations", operations);
 
-            // Получаем статистику
             Map<String, Double> stats = operationService.getUserStats(userId);
             model.put("stats", stats);
 

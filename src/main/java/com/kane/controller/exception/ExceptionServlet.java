@@ -27,7 +27,6 @@ public class ExceptionServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
         model.put("title", "Ошибка — Kane");
 
-        // Можно передавать сообщение об ошибке, если оно есть
         String errorMessage = (String) request.getAttribute("error");
         if (errorMessage != null) {
             model.put("error", errorMessage);

@@ -41,18 +41,14 @@ public class AnaliticServlet extends HttpServlet {
 
         long userId = user.getId();
 
-        // 1. Общая статистика (доходы, расходы, баланс)
         Map<String, Double> stats = operationService.getUserStats(userId);
 
-        // 2. Все операции
         List<Operation> allOperations = operationService.getUserOperations(userId);
 
-        // 3. Только расходы
         List<Operation> expenses = allOperations.stream()
                 .filter(op -> "expense".equals(op.getType()))
                 .toList();
 
-        // 4. Подготавливаем список расходов с цветом категории
         List<Category> expenseCategories = operationService.getExpenseCategories();
         Map<Long, Category> categoryMap = expenseCategories.stream()
                 .collect(Collectors.toMap(Category::getId, c -> c));
@@ -70,7 +66,7 @@ public class AnaliticServlet extends HttpServlet {
                     String name = (cat != null) ? cat.getName() : "Без категории";
                     String color = (cat != null && cat.getColor() != null && !cat.getColor().isEmpty())
                             ? cat.getColor()
-                            : "#9CA3AF"; // fallback: gray-400
+                            : "#9CA3AF";
 
                     Map<String, Object> item = new HashMap<>();
                     item.put("name", name);
@@ -81,12 +77,11 @@ public class AnaliticServlet extends HttpServlet {
                 .sorted((a, b) -> Double.compare((Double) b.get("amount"), (Double) a.get("amount")))
                 .toList();
 
-        // 5. Передаём данные в шаблон
         Map<String, Object> model = new HashMap<>();
         model.put("user", user);
         model.put("stats", stats);
         model.put("totalOperations", allOperations.size());
-        model.put("expenseSummary", expenseSummary); // ← используем только это
+        model.put("expenseSummary", expenseSummary);
         model.put("contextPath", request.getContextPath());
 
         try {

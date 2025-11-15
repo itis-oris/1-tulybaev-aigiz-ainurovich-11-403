@@ -17,14 +17,13 @@ public class CategoriesUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         req.setCharacterEncoding("UTF-8");
 
-        long id = Long.parseLong(req.getParameter("id")); // ← обязательно
+        long id = Long.parseLong(req.getParameter("id"));
         String name = req.getParameter("name");
         String type = req.getParameter("type");
         String color = req.getParameter("color");
         String icon = req.getParameter("icon");
 
         Category c = new Category();
-        c.setId(id);          // ← обязательно
         c.setName(name);
         c.setType(type);
         c.setColor(color);

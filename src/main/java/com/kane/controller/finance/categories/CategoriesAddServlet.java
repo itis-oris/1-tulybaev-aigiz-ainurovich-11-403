@@ -28,7 +28,6 @@ public class CategoriesAddServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
 
-        // Получаем параметры формы
         String name = request.getParameter("name");
         String type = request.getParameter("type");
         String color = request.getParameter("color");
@@ -50,7 +49,6 @@ public class CategoriesAddServlet extends HttpServlet {
             Map<String, Object> model = new HashMap<>();
             model.put("error", e.getMessage());
 
-            // Можно передавать существующие категории, чтобы они отобразились в шаблоне
             model.put("incomeCategories", categoryService.getIncomeCategories());
             model.put("expenseCategories", categoryService.getExpenseCategories());
 

@@ -18,9 +18,7 @@ public class CategoriesDeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         long id = Long.parseLong(req.getParameter("id"));
 
-        // Проверяем, есть ли операции с этой категорией
         if (!operationService.getOperationsByCategoryId(id).isEmpty()) {
-            // Перенаправляем с ошибкой
             resp.sendRedirect(req.getContextPath() + "/categories?error=category_in_use");
             return;
         }

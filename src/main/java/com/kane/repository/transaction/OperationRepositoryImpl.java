@@ -18,7 +18,6 @@ public class OperationRepositoryImpl implements OperationRepository {
 
     @Override
     public void addOperation(Operation operation) {
-        // существующий код без изменений
         String sql = "INSERT INTO transactions (user_id, category_id, amount, type, transaction_date, note) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DBConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -37,7 +36,7 @@ public class OperationRepositoryImpl implements OperationRepository {
 
     @Override
     public List<Operation> getAllByUserId(long userId) {
-        return getAllByUserId(userId, 0); // 0 = без лимита
+        return getAllByUserId(userId, 0);
     }
 
     // НОВЫЙ МЕТОД с лимитом

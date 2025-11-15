@@ -5,7 +5,6 @@ import com.kane.service.AuthService;
 import com.kane.util.FreemarkerConfig;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -62,7 +61,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             logger.warn("Failed login attempt for email: {}", email);
             req.setAttribute("error", "Неверный email или пароль");
-            doGet(req, resp); // 🔹 повторно вызываем doGet, чтобы снова отрендерить шаблон с ошибкой
+            doGet(req, resp);
         }
     }
 }

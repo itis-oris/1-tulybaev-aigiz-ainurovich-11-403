@@ -28,12 +28,10 @@ public class RegisterServlet extends HttpServlet {
 
         logger.info("GET /register - showing registration page");
 
-        // Подготовка данных для шаблона
         Map<String, Object> model = new HashMap<>();
         model.put("title", "Регистрация — Kane");
         model.put("contextPath", request.getContextPath());
 
-        // Получаем шаблон и обрабатываем
         try {
             Template template = FreemarkerConfig.getConfig().getTemplate("auth/registration.ftl");
             response.setContentType("text/html; charset=UTF-8");
